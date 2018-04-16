@@ -1,0 +1,40 @@
+Windows Registry Editor Version 5.00
+; Remove unexpected processes from autorun:
+; https://superuser.com/a/1314468/572069
+
+
+; All third-party schedules of Task Scheduler:
+; https://stackoverflow.com/a/334208/5951529
+; https://superuser.com/a/1213207/572069
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree]
+
+
+; Windows registry keys:
+; https://msdn.microsoft.com/en-us/library/windows/desktop/aa376977(v=vs.85).aspx
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run]
+"CCleaner Monitoring"=-
+"Discord"=-
+"Docker for Windows"=-
+
+
+; Keys from Autoruns program:
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+"SunJavaUpdateSched"=-
+; http://smallvoid.com/article/winnt-services-regedit.html
+; [WARNING] Needs “dword” type; “dword:4” — service disabled:
+; https://www.laptopmag.com/articles/create-reg-file-for-registry-hacks
+; http://smallvoid.com/article/winnt-services-regedit.html#comment-44896
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AdobeARMservice]
+"Start"=dword:4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AdobeFlashPlayerUpdateSvc]
+"Start"=dword:4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Apache]
+"Start"=dword:4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\com.docker.service]
+"Start"=dword:4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate]
+"Start"=dword:4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem]
+"Start"=dword:4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SkypeUpdate]
+"Start"=dword:4
